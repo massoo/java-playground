@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="be.demo"/>
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>-->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>-->
+
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <!--Don't add suffix or prefix like you do with .jsp files-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+    </bean>
+
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" >
+        <property name="definitions">
+            <value>/WEB-INF/tiles.xml</value>
+        </property>
+    </bean>
+
+    <!--<bean id="viewResolver"-->
+          <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix">-->
+            <!--<value>/WEB-INF/pages/</value>-->
+        <!--</property>-->
+        <!--<property name="suffix">-->
+            <!--<value>.jsp</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!-- bind your messages.properties -->
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource"
+          id="messageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="org.hsqldb.jdbcDriver"/>
+        <property name="jdbcUrl" value="jdbc:hsqldb:mem:mydb"/>
+        <property name="user" value="sa"/>
+        <property name="password" value=""/>
+        <property name="minPoolSize" value="5"/>
+        <property name="initialPoolSize" value="5"/>
+        <property name="maxPoolSize" value="10"/>
+
+        <property name="testConnectionOnCheckout" value="true"/>
+        <property name="checkoutTimeout" value="5000"/>
+        <property name="breakAfterAcquireFailure" value="false"/>
+        <property name="acquireRetryAttempts" value="0"/>
+        <property name="acquireRetryDelay" value="5000"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>be.demo.bean.Login</value>
+            </list>
+        </property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+
+    <bean id="txManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+</beans>
