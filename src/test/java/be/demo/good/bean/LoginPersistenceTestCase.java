@@ -1,6 +1,6 @@
-package be.demo.bean;
+package be.demo.good.bean;
 
-import be.demo.dao.ILoginDAO;
+import be.demo.good.dao.ILoginDAO;
 import org.hamcrest.CoreMatchers;
 import org.hibernate.QueryException;
 import org.junit.After;

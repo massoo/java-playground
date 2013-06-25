@@ -73,7 +73,7 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>be.demo.bean.Login</value>
+                <value>be.demo.good.bean.Login</value>
             </list>
         </property>
     </bean>

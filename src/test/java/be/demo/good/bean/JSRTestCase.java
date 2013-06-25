@@ -1,4 +1,4 @@
-package be.demo.bean;
+package be.demo.good.bean;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;

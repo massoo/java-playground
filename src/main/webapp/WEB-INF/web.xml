@@ -55,7 +55,7 @@
 
     <filter>
         <filter-name>CleanseFilter</filter-name>
-        <filter-class>be.demo.filters.CleanseFilter</filter-class>
+        <filter-class>be.demo.good.filters.CleanseFilter</filter-class>
     </filter>
 
     <filter-mapping>
