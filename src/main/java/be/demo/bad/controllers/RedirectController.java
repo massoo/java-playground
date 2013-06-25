@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * User: massoo
  */
-@Controller
-@RequestMapping(value = "/url")
+@Controller(value = "badRedirectController")
+@RequestMapping(value = "/bad/url")
 public class RedirectController {
 
     @RequestMapping(value = "/index-redirect", method = RequestMethod.GET)

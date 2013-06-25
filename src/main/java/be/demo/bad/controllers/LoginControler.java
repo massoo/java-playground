@@ -12,8 +12,8 @@ import javax.validation.Valid;
 /**
  * User: massoo
  */
-@Controller
-@RequestMapping(value = "/jsr")
+@Controller(value = "badLoginController")
+@RequestMapping(value = "/bad/jsr")
 public class LoginControler {
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)

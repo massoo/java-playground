@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * User: massoo
  */
-@Controller
-@RequestMapping(value = "/url")
+@Controller(value = "badUrlController")
+@RequestMapping(value = "/bad/url")
 public class UrlController {
 
     @RequestMapping(value = "/index-normalization", method = RequestMethod.GET)

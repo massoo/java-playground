@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * User: massoo
  */
-@Controller
+@Controller(value = "badDefaultController")
+@RequestMapping(value = "/bad/*")
 public class DefaultController {
 
     @RequestMapping(value="*",method = RequestMethod.GET)

@@ -53,11 +53,26 @@
         </init-param>
     </filter>
 
+    <!-- Cleansing filter that allows a pattern of characters and cleanses the rest -->
     <filter>
         <filter-name>CleanseFilter</filter-name>
         <filter-class>be.demo.good.filters.CleanseFilter</filter-class>
     </filter>
 
+    <!-- ESAPI ModSecurity WAF -->
+    <filter>
+        <filter-name>EsapiModSecurityWaf</filter-name>
+        <filter-class>org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter</filter-class>
+        <init-param>
+            <param-name>log_settings</param-name>
+            <param-value>/waf/log_settings.properties</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EsapiModSecurityWaf</filter-name>
+        <url-pattern>/demo/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>CleanseFilter</filter-name>
         <url-pattern>/demo/*</url-pattern>

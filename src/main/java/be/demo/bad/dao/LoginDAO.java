@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * User: massoo
  */
-@Repository
+@Repository(value = "badLoginDao")
 @Transactional
 public class LoginDAO implements ILoginDAO {
 
