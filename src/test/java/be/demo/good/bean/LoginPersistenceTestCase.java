@@ -18,7 +18,7 @@ import java.util.List;
  * User: massoo
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:/configuration/applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath*:/WEB-INF/configuration/applicationContext.xml"})
 public class LoginPersistenceTestCase {
 
     private String email = "test@demo.com";
