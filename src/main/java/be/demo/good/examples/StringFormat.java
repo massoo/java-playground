@@ -20,7 +20,7 @@ public class StringFormat {
      */
     public static void main(String[] args) {
         try {
-            System.out.printf("%s %d", "Everything is a test !", "test");
+            System.out.printf("%s %n", "Everything is a test !", "test");
         } catch (IllegalFormatException ex) {
             LOG.error(ex.getMessage());
         }

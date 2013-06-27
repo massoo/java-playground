@@ -3,6 +3,7 @@ package be.demo.good.examples;
 import be.demo.good.exception.TechnicalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -20,6 +21,9 @@ import java.net.URL;
 
 /**
  * User: massoo
+ * We parse the XML first so we can check if it doesn't contain any parser attacks which
+ * might blow up our JVM while validating. We can prove that entity-expansion attacks work against
+ * simple validation with even settings certain features for the parser.
  */
 public class XMLSchemaValidation {
 
@@ -72,8 +76,10 @@ public class XMLSchemaValidation {
 
         try {
 
-            builder.parse(xmlFile.getSystemId());
+            Document document = builder.parse(xmlFile.getSystemId());
             validator.validate(xmlFile);
+
+            // process document
 
             LOG.info("XML is valid: {}", xmlFile.getSystemId());
         } catch (Exception e) {

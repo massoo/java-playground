@@ -1,6 +1,8 @@
 package be.demo.good.examples;
 
 import be.demo.good.exception.TechnicalException;
+import org.owasp.esapi.ESAPI;
+import org.owasp.esapi.errors.EncodingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,12 +30,19 @@ public class URLNormalization {
 
         try {
 
+
+            // this isn't a solution because this only works for URLs
+            //ESAPI.encoder().decodeFromURL(args[0]);
+
             URI craftedURL = new URI(args[0]).normalize();
             LOG.info("We can work with the URI: {}",craftedURL.toString());
 
         } catch (URISyntaxException e) {
             LOG.error(e.getMessage());
         }
+//        } catch (EncodingException e) {
+//            LOG.error(e.getMessage());
+//        }
 
     }
 
