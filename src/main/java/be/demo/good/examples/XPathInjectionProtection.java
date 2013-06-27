@@ -1,8 +1,8 @@
 package be.demo.good.examples;
 
 import be.demo.good.exception.TechnicalException;
-import be.demo.good.utility.MapVariableResolver;
-import be.demo.good.utility.Utility;
+import be.demo.utility.MapVariableResolver;
+import be.demo.utility.Utility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;

@@ -1,11 +1,11 @@
-package be.demo.good.examples;
+package be.demo.utility;
 
 import java.math.BigInteger;
 
 /**
  * User: massoo
  */
-public class IntegerManipulation {
+public class IntegerOperationUtility {
 
     private static final BigInteger bigMaxInt = BigInteger.valueOf(Integer.MAX_VALUE);
     private static final BigInteger bigMinInt = BigInteger.valueOf(Integer.MIN_VALUE);
@@ -95,4 +95,5 @@ public class IntegerManipulation {
 
         return Math.abs(a);
     }
+
 }

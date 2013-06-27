@@ -1,4 +1,4 @@
-package be.demo.good.utility;
+package be.demo.utility;
 
 import javax.xml.namespace.QName;
 import javax.xml.xpath.XPathVariableResolver;

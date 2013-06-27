@@ -1,4 +1,4 @@
-package be.demo.good.utility;
+package be.demo.utility;
 
 import java.net.MalformedURLException;
 import java.net.URI;

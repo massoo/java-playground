@@ -1,4 +1,4 @@
-package be.demo.good.utility;
+package be.demo.utility;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package be.demo.good.filters;
 
-import be.demo.good.utility.CleanseUtility;
+import be.demo.utility.CleanseUtility;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

@@ -1,6 +1,6 @@
 package be.demo.good.controllers;
 
-import be.demo.good.utility.Utility;
+import be.demo.utility.Utility;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
