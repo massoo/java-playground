@@ -1,4 +1,4 @@
-package be.demo.good.bean;
+package be.demo.bean;
 
 import be.demo.utility.IntegerOperationUtility;
 import org.hamcrest.MatcherAssert;
@@ -22,7 +22,7 @@ public class IntegerOperationsTestCase {
     @Test
     public void testDetectIntegerOverflow() {
         BigInteger intValue = BigInteger.valueOf(standardValue);
-        BigInteger intOverflow = BigInteger.valueOf(Integer.MAX_VALUE + standardValue);
+        BigInteger intOverflow = BigInteger.valueOf(new Long(Integer.MAX_VALUE) + standardValue);
 
         try {
             IntegerOperationUtility.detectIntegerOverflow(intOverflow);

@@ -1,10 +1,12 @@
-package be.demo.bad.dao;
+package be.demo.good.dao;
 
-import be.demo.bad.bean.Login;
+import be.demo.api.ILoginDAO;
+import be.demo.bean.Login;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,9 +15,9 @@ import java.util.List;
 /**
  * User: massoo
  */
-@Repository(value = "badLoginDao")
+@Repository
 @Transactional
-public class LoginDAO implements ILoginDAO {
+public class GoodLoginDao implements ILoginDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

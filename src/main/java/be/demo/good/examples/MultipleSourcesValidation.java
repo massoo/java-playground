@@ -1,6 +1,6 @@
 package be.demo.good.examples;
 
-import be.demo.good.bean.Person;
+import be.demo.bean.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

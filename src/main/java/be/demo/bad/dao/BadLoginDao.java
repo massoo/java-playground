@@ -1,6 +1,7 @@
-package be.demo.good.dao;
+package be.demo.bad.dao;
 
-import be.demo.good.bean.Login;
+import be.demo.api.ILoginDAO;
+import be.demo.bean.Login;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -15,12 +16,11 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class LoginDAO implements ILoginDAO {
+public class BadLoginDao implements ILoginDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Override
     public void addLogin(Login login) {
         sessionFactory.getCurrentSession().persist(login);
     }

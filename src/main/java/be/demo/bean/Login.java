@@ -1,4 +1,4 @@
-package be.demo.bad.bean;
+package be.demo.bean;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;

@@ -1,6 +1,6 @@
 package be.demo.bad.examples;
 
-import be.demo.bad.bean.Person;
+import be.demo.bean.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,13 +59,19 @@ public class MultipleSourcesValidation {
         boolean isValid = true;
 
         Matcher matcher = pattern.matcher(person.getFirstName());
-        if (matcher.find()) { isValid = false; }
+        if (matcher.find()) {
+            isValid = false;
+        }
 
         matcher = pattern.matcher(person.getInitials());
-        if (matcher.find()) { isValid = false; }
+        if (matcher.find()) {
+            isValid = false;
+        }
 
         matcher = pattern.matcher(person.getLastName());
-        if (matcher.find()) { isValid = false; }
+        if (matcher.find()) {
+            isValid = false;
+        }
 
         if (isValid) {
             LOG.info("i guess it's NOT okay to show: " + person.getName());

@@ -1,6 +1,6 @@
 package be.demo.good.controllers;
 
-import be.demo.good.bean.Login;
+import be.demo.bean.Login;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;

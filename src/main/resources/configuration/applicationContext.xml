@@ -12,12 +12,10 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan base-package="be.demo"/>
+    <context:annotation-config />
     <mvc:annotation-driven/>
 
     <mvc:resources mapping="/resources/**" location="resources"/>
-
-    <!--<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>-->
-    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>-->
 
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <!--Don't add suffix or prefix like you do with .jsp files-->
@@ -29,16 +27,6 @@
             <value>/WEB-INF/tiles.xml</value>
         </property>
     </bean>
-
-    <!--<bean id="viewResolver"-->
-          <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<property name="prefix">-->
-            <!--<value>/WEB-INF/pages/</value>-->
-        <!--</property>-->
-        <!--<property name="suffix">-->
-            <!--<value>.jsp</value>-->
-        <!--</property>-->
-    <!--</bean>-->
 
     <!-- bind your messages.properties -->
     <bean class="org.springframework.context.support.ResourceBundleMessageSource"
@@ -73,13 +61,14 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>be.demo.good.bean.Login</value>
+                <value>be.demo.bean.Login</value>
             </list>
         </property>
     </bean>
 
     <tx:annotation-driven transaction-manager="txManager"/>
 
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
     <bean id="txManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory">

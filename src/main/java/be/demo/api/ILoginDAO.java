@@ -1,6 +1,6 @@
-package be.demo.good.dao;
+package be.demo.api;
 
-import be.demo.good.bean.Login;
+import be.demo.bean.Login;
 
 import java.util.List;
 

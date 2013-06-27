@@ -1,6 +1,6 @@
-package be.demo.bad.bean;
+package be.demo.bean;
 
-import be.demo.bad.utility.Utility;
+import be.demo.utility.Utility;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;

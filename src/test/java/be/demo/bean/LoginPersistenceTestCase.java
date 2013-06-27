@@ -1,6 +1,6 @@
-package be.demo.good.bean;
+package be.demo.bean;
 
-import be.demo.good.dao.ILoginDAO;
+import be.demo.api.ILoginDAO;
 import org.hamcrest.CoreMatchers;
 import org.hibernate.QueryException;
 import org.junit.After;
@@ -18,12 +18,14 @@ import java.util.List;
  * User: massoo
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:/WEB-INF/configuration/applicationContext.xml"})
+// TODO: had to exclude tiles configurer and move this altered applicationContext to test/resources
+@ContextConfiguration(locations = {"classpath:configuration/applicationContext.xml"})
 public class LoginPersistenceTestCase {
 
     private String email = "test@demo.com";
+
     @Autowired
-    private ILoginDAO loginDAO;
+    private ILoginDAO goodLoginDao;
 
     @Before
     public void doBefore() {
@@ -31,28 +33,28 @@ public class LoginPersistenceTestCase {
         login.setEmail(email);
         login.setPassword("password");
 
-        loginDAO.addLogin(login);
+        goodLoginDao.addLogin(login);
     }
 
     @After
     public void doAfter() {
-        loginDAO.deleteAll();
+        goodLoginDao.deleteAll();
     }
 
     @Test
     public void testLogin() {
-        List<Login> loginList = loginDAO.getLogins();
+        List<Login> loginList = goodLoginDao.getLogins();
         Assert.assertThat(1, CoreMatchers.equalTo(loginList.size()));
     }
 
     @Test
     public void testLoginByEmail() {
-        loginDAO.getLoginByEmail(email);
+        goodLoginDao.getLoginByEmail(email);
     }
 
     @Test(expected = QueryException.class)
     public void testBADLoginByEmail() {
-        Login login = loginDAO.BADgetLoginByEmail(email);
+        Login login = goodLoginDao.BADgetLoginByEmail(email);
         Assert.assertThat(login, CoreMatchers.notNullValue());
         Assert.assertThat(login.getEmail(), CoreMatchers.equalTo(email));
     }
