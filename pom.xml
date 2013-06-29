@@ -167,6 +167,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Safe integer/long operations -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.2</version>
+        </dependency>
+
 
         <!-- JSR 303 reference implementation -->
         <dependency>
@@ -204,7 +211,7 @@
                 <version>2.3</version>
                 <configuration>
                     <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-                    <webappDirectory>/Users/massoo/Documents/tools/apache-tomcat-7.0.40/webapps/demo</webappDirectory>
+                    <webappDirectory>${tomcat.location}</webappDirectory>
                 </configuration>
             </plugin>
         </plugins>

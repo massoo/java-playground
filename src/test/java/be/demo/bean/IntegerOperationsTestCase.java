@@ -1,6 +1,7 @@
 package be.demo.bean;
 
 import be.demo.utility.IntegerOperationUtility;
+import org.apache.commons.math3.util.ArithmeticUtils;
 import org.hamcrest.MatcherAssert;
 import org.junit.Assert;
 import org.junit.Test;
@@ -62,6 +63,18 @@ public class IntegerOperationsTestCase {
     }
 
     @Test
+    public void testUnsafeAdd() {
+        BigInteger bigInteger = BigInteger.valueOf(Integer.MAX_VALUE);
+        bigInteger.add(BigInteger.valueOf(standardValue));
+
+        int calculatedInteger = Integer.MAX_VALUE + standardValue;
+        int anotherCalculatedInteger = new Long(new Long(Integer.MAX_VALUE) + standardValue).intValue();
+
+        Assert.assertThat(1,equalTo(bigInteger.compareTo(BigInteger.valueOf(calculatedInteger))));
+        Assert.assertThat(1,equalTo(bigInteger.compareTo(BigInteger.valueOf(anotherCalculatedInteger))));
+    }
+
+    @Test
     public void testSafeSubtract() {
         try {
             IntegerOperationUtility.safeSubtract(Integer.MIN_VALUE, standardValue);
@@ -111,6 +124,19 @@ public class IntegerOperationsTestCase {
 
         int calculatedInteger = IntegerOperationUtility.safeNegate(-standardValue);
         Assert.assertThat(standardValue,equalTo(calculatedInteger));
+    }
+
+    @Test
+    public void testSaveIntegerOperations() {
+        try {
+            ArithmeticUtils.addAndCheck(Integer.MAX_VALUE,standardValue);
+            Assert.fail("MathArithmeticException expected due to an Integer overflow");
+        } catch (ArithmeticException ex) {
+            // everything is going as planned
+        }
+
+        int calculatedInteger = ArithmeticUtils.addAndCheck(standardValue,standardValue);
+        Assert.assertThat(standardValue+standardValue, equalTo(calculatedInteger));
     }
 
 
