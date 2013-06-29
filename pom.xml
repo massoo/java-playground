@@ -206,12 +206,32 @@
 
             <!-- deploy to the tomcat web-apps directory -->
             <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo>deleting ${tomcat.location}/${project.artifactId}</echo>
+                                <delete includeEmptyDirs="true">
+                                    <fileset dir="${tomcat.location}" includes="${project.artifactId}/**" />
+                                </delete>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
                     <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-                    <webappDirectory>${tomcat.location}</webappDirectory>
+                    <webappDirectory>${tomcat.location}/${project.artifactId}</webappDirectory>
                 </configuration>
             </plugin>
         </plugins>
