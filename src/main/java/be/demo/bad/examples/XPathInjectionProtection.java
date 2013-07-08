@@ -3,6 +3,7 @@ package be.demo.bad.examples;
 import be.demo.bad.exception.TechnicalException;
 import be.demo.bad.utility.MapVariableResolver;
 import be.demo.bad.utility.Utility;
+import org.apache.commons.lang.CharSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -11,6 +12,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.*;
 import java.io.File;
+import java.net.URLDecoder;
 
 /**
  * User: massoo

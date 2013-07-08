@@ -16,7 +16,6 @@ public class MapVariableResolver implements XPathVariableResolver {
         variableMap.put(key,value);
     }
 
-    @Override
     public Object resolveVariable(QName variableName) {
         return variableMap.get(variableName.getLocalPart());
     }

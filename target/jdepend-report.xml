@@ -1,0 +1,772 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="be.demo.api">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>0</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>3</Ce>
+                <A>1</A>
+                <I>0.6</I>
+                <D>0.6</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="ILoginDAO.java">
+                    be.demo.api.ILoginDAO
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.bean</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>be.demo.bad.dao</Package>
+                <Package>be.demo.good.dao</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.bad.controllers">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>6</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="DefaultController.java">
+                    be.demo.bad.controllers.DefaultController
+                </Class>
+                <Class sourceFile="LoginControler.java">
+                    be.demo.bad.controllers.LoginControler
+                </Class>
+                <Class sourceFile="RedirectController.java">
+                    be.demo.bad.controllers.RedirectController
+                </Class>
+                <Class sourceFile="UrlController.java">
+                    be.demo.bad.controllers.UrlController
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.bad.utility</Package>
+                <Package>be.demo.bean</Package>
+                <Package>java.lang</Package>
+                <Package>javax.servlet.http</Package>
+                <Package>org.springframework.ui</Package>
+                <Package>org.springframework.validation</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.bad.dao">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="BadLoginDao.java">
+                    be.demo.bad.dao.BadLoginDao
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.api</Package>
+                <Package>be.demo.bean</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>org.hibernate</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.bad.examples">
+            <Stats>
+                <TotalClasses>18</TotalClasses>
+                <ConcreteClasses>18</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>20</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="DateNormalization.java">
+                    be.demo.bad.examples.DateNormalization
+                </Class>
+                <Class sourceFile="FilePathSanitization.java">
+                    be.demo.bad.examples.FilePathSanitization
+                </Class>
+                <Class sourceFile="IntegerManipulation.java">
+                    be.demo.bad.examples.IntegerManipulation
+                </Class>
+                <Class sourceFile="LoadNativeLibrary.java">
+                    be.demo.bad.examples.LoadNativeLibrary
+                </Class>
+                <Class sourceFile="MultipleSourcesValidation.java">
+                    be.demo.bad.examples.MultipleSourcesValidation
+                </Class>
+                <Class sourceFile="OSCommandSanitization.java">
+                    be.demo.bad.examples.OSCommandSanitization
+                </Class>
+                <Class sourceFile="PatternSanitization.java">
+                    be.demo.bad.examples.PatternSanitization
+                </Class>
+                <Class sourceFile="StringEncoding.java">
+                    be.demo.bad.examples.StringEncoding
+                </Class>
+                <Class sourceFile="StringFormat.java">
+                    be.demo.bad.examples.StringFormat
+                </Class>
+                <Class sourceFile="StringNormalization.java">
+                    be.demo.bad.examples.StringNormalization
+                </Class>
+                <Class sourceFile="StringToNumber.java">
+                    be.demo.bad.examples.StringToNumber
+                </Class>
+                <Class sourceFile="URLNormalization.java">
+                    be.demo.bad.examples.URLNormalization
+                </Class>
+                <Class sourceFile="WhiteListUrlRedirection.java">
+                    be.demo.bad.examples.WhiteListUrlRedirection
+                </Class>
+                <Class sourceFile="XMLSchemaBADValidation.java">
+                    be.demo.bad.examples.XMLSchemaBADValidation
+                </Class>
+                <Class sourceFile="XMLSchemaValidation.java">
+                    be.demo.bad.examples.XMLSchemaValidation
+                </Class>
+                <Class sourceFile="XMLSchemaValidation.java">
+                    be.demo.bad.examples.XMLSchemaValidation$MyErrorHandler
+                </Class>
+                <Class sourceFile="XPathInjectionProtection.java">
+                    be.demo.bad.examples.XPathInjectionProtection
+                </Class>
+                <Class sourceFile="XPathProtectionPreCompilation.java">
+                    be.demo.bad.examples.XPathProtectionPreCompilation
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.bad.exception</Package>
+                <Package>be.demo.bad.utility</Package>
+                <Package>be.demo.bean</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.math</Package>
+                <Package>java.net</Package>
+                <Package>java.text</Package>
+                <Package>java.util</Package>
+                <Package>java.util.regex</Package>
+                <Package>javax.validation</Package>
+                <Package>javax.xml.parsers</Package>
+                <Package>javax.xml.transform</Package>
+                <Package>javax.xml.transform.stream</Package>
+                <Package>javax.xml.validation</Package>
+                <Package>javax.xml.xpath</Package>
+                <Package>org.apache.commons.io</Package>
+                <Package>org.slf4j</Package>
+                <Package>org.w3c.dom</Package>
+                <Package>org.xml.sax</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.bad.exception">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>1</Ce>
+                <A>0</A>
+                <I>0.5</I>
+                <D>0.5</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="TechnicalException.java">
+                    be.demo.bad.exception.TechnicalException
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>be.demo.bad.examples</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.bad.filters">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>8</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="CharacterSetRequestFilter.java">
+                    be.demo.bad.filters.CharacterSetRequestFilter
+                </Class>
+                <Class sourceFile="CleanseFilter.java">
+                    be.demo.bad.filters.CleanseFilter
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.bad.utility</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>java.util.regex</Package>
+                <Package>javax.servlet</Package>
+                <Package>javax.servlet.http</Package>
+                <Package>org.slf4j</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.bad.utility">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>9</Ce>
+                <A>0</A>
+                <I>0.75</I>
+                <D>0.25</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="CleanseUtility.java">
+                    be.demo.bad.utility.CleanseUtility
+                </Class>
+                <Class sourceFile="MapVariableResolver.java">
+                    be.demo.bad.utility.MapVariableResolver
+                </Class>
+                <Class sourceFile="Utility.java">
+                    be.demo.bad.utility.Utility
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.net</Package>
+                <Package>java.text</Package>
+                <Package>java.util</Package>
+                <Package>java.util.regex</Package>
+                <Package>javax.xml.namespace</Package>
+                <Package>javax.xml.xpath</Package>
+                <Package>org.slf4j</Package>
+                <Package>org.springframework.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>be.demo.bad.controllers</Package>
+                <Package>be.demo.bad.examples</Package>
+                <Package>be.demo.bad.filters</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.bean">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>7</Ca>
+                <Ce>2</Ce>
+                <A>0</A>
+                <I>0.22</I>
+                <D>0.78</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Login.java">
+                    be.demo.bean.Login
+                </Class>
+                <Class sourceFile="Person.java">
+                    be.demo.bean.Person
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.utility</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>be.demo.api</Package>
+                <Package>be.demo.bad.controllers</Package>
+                <Package>be.demo.bad.dao</Package>
+                <Package>be.demo.bad.examples</Package>
+                <Package>be.demo.good.controllers</Package>
+                <Package>be.demo.good.dao</Package>
+                <Package>be.demo.good.examples</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.good.controllers">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>6</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="DefaultController.java">
+                    be.demo.good.controllers.DefaultController
+                </Class>
+                <Class sourceFile="LoginControler.java">
+                    be.demo.good.controllers.LoginControler
+                </Class>
+                <Class sourceFile="RedirectController.java">
+                    be.demo.good.controllers.RedirectController
+                </Class>
+                <Class sourceFile="UrlController.java">
+                    be.demo.good.controllers.UrlController
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.bean</Package>
+                <Package>be.demo.utility</Package>
+                <Package>java.lang</Package>
+                <Package>javax.servlet.http</Package>
+                <Package>org.springframework.ui</Package>
+                <Package>org.springframework.validation</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.good.dao">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="GoodLoginDao.java">
+                    be.demo.good.dao.GoodLoginDao
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.api</Package>
+                <Package>be.demo.bean</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>org.hibernate</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.good.examples">
+            <Stats>
+                <TotalClasses>17</TotalClasses>
+                <ConcreteClasses>17</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>19</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="DateNormalization.java">
+                    be.demo.good.examples.DateNormalization
+                </Class>
+                <Class sourceFile="FilePathSanitization.java">
+                    be.demo.good.examples.FilePathSanitization
+                </Class>
+                <Class sourceFile="LoadNativeLibrary.java">
+                    be.demo.good.examples.LoadNativeLibrary
+                </Class>
+                <Class sourceFile="MultipleSourcesValidation.java">
+                    be.demo.good.examples.MultipleSourcesValidation
+                </Class>
+                <Class sourceFile="OSCommandSanitization.java">
+                    be.demo.good.examples.OSCommandSanitization
+                </Class>
+                <Class sourceFile="PatternSanitization.java">
+                    be.demo.good.examples.PatternSanitization
+                </Class>
+                <Class sourceFile="StringEncoding.java">
+                    be.demo.good.examples.StringEncoding
+                </Class>
+                <Class sourceFile="StringFormat.java">
+                    be.demo.good.examples.StringFormat
+                </Class>
+                <Class sourceFile="StringNormalization.java">
+                    be.demo.good.examples.StringNormalization
+                </Class>
+                <Class sourceFile="StringToNumber.java">
+                    be.demo.good.examples.StringToNumber
+                </Class>
+                <Class sourceFile="URLNormalization.java">
+                    be.demo.good.examples.URLNormalization
+                </Class>
+                <Class sourceFile="WhiteListUrlRedirection.java">
+                    be.demo.good.examples.WhiteListUrlRedirection
+                </Class>
+                <Class sourceFile="XMLSchemaBADValidation.java">
+                    be.demo.good.examples.XMLSchemaBADValidation
+                </Class>
+                <Class sourceFile="XMLSchemaValidation.java">
+                    be.demo.good.examples.XMLSchemaValidation
+                </Class>
+                <Class sourceFile="XMLSchemaValidation.java">
+                    be.demo.good.examples.XMLSchemaValidation$MyErrorHandler
+                </Class>
+                <Class sourceFile="XPathInjectionProtection.java">
+                    be.demo.good.examples.XPathInjectionProtection
+                </Class>
+                <Class sourceFile="XPathProtectionPreCompilation.java">
+                    be.demo.good.examples.XPathProtectionPreCompilation
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.bean</Package>
+                <Package>be.demo.good.exception</Package>
+                <Package>be.demo.utility</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.net</Package>
+                <Package>java.text</Package>
+                <Package>java.util</Package>
+                <Package>java.util.regex</Package>
+                <Package>javax.validation</Package>
+                <Package>javax.xml.parsers</Package>
+                <Package>javax.xml.transform</Package>
+                <Package>javax.xml.transform.stream</Package>
+                <Package>javax.xml.validation</Package>
+                <Package>javax.xml.xpath</Package>
+                <Package>org.apache.commons.io</Package>
+                <Package>org.slf4j</Package>
+                <Package>org.w3c.dom</Package>
+                <Package>org.xml.sax</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.good.exception">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>1</Ce>
+                <A>0</A>
+                <I>0.5</I>
+                <D>0.5</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="TechnicalException.java">
+                    be.demo.good.exception.TechnicalException
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>be.demo.good.examples</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.good.filters">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>8</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="CharacterSetRequestFilter.java">
+                    be.demo.good.filters.CharacterSetRequestFilter
+                </Class>
+                <Class sourceFile="CleanseFilter.java">
+                    be.demo.good.filters.CleanseFilter
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>be.demo.utility</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>java.util.regex</Package>
+                <Package>javax.servlet</Package>
+                <Package>javax.servlet.http</Package>
+                <Package>org.slf4j</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="be.demo.utility">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>4</Ca>
+                <Ce>10</Ce>
+                <A>0</A>
+                <I>0.71</I>
+                <D>0.29</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="CleanseUtility.java">
+                    be.demo.utility.CleanseUtility
+                </Class>
+                <Class sourceFile="IntegerOperationUtility.java">
+                    be.demo.utility.IntegerOperationUtility
+                </Class>
+                <Class sourceFile="MapVariableResolver.java">
+                    be.demo.utility.MapVariableResolver
+                </Class>
+                <Class sourceFile="Utility.java">
+                    be.demo.utility.Utility
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.math</Package>
+                <Package>java.net</Package>
+                <Package>java.text</Package>
+                <Package>java.util</Package>
+                <Package>java.util.regex</Package>
+                <Package>javax.xml.namespace</Package>
+                <Package>javax.xml.xpath</Package>
+                <Package>org.slf4j</Package>
+                <Package>org.springframework.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>be.demo.bean</Package>
+                <Package>be.demo.good.controllers</Package>
+                <Package>be.demo.good.examples</Package>
+                <Package>be.demo.good.filters</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="java.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.lang">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.math">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.net">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.text">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util.regex">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.servlet">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.servlet.http">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.validation">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.xml.namespace">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.xml.parsers">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.xml.transform">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.xml.transform.stream">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.xml.validation">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.xml.xpath">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.apache.commons.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.hibernate">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.slf4j">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.springframework.ui">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.springframework.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.springframework.validation">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.w3c.dom">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.xml.sax">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+    </Packages>
+
+    <Cycles>
+    </Cycles>
+</JDepend>

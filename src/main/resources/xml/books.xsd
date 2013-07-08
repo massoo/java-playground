@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:demo.com:books" xmlns:xsb="urn:demo.com:books">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <xs:element name="books">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="book" type="xsb:book" minOccurs="1" maxOccurs="100"/>
+                <xs:element name="book" type="book" minOccurs="1" maxOccurs="100"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
     <xs:complexType name="book">
         <xs:sequence>
-            <xs:element name="author" type="xsb:author" minOccurs="1" maxOccurs="1" />
-            <xs:element name="title" type="xsb:title" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="price" type="xsb:price" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="publish_date" type="xsb:publish_date" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="author" type="author" minOccurs="1" maxOccurs="1" />
+            <xs:element name="title" type="title" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="price" type="price" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="publish_date" type="publish_date" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="virtual-library-path" type="virtual-library-path" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
         <xs:attribute name="id" type="xs:long"/>
     </xs:complexType>
@@ -22,6 +23,12 @@
     <xs:simpleType name="author">
         <xs:restriction base="xs:string">
             <xs:pattern value="[A-Za-z0-9_ -]{1,20}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="virtual-library-path">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z0-9\-_\.\\: ]+"/>
         </xs:restriction>
     </xs:simpleType>
 

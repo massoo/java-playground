@@ -1,9 +1,8 @@
 package be.demo.good.examples;
 
-import be.demo.good.exception.TechnicalException;
+import be.demo.bad.exception.TechnicalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -13,25 +12,25 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
 import java.io.File;
 import java.net.URL;
 
 /**
  * User: massoo
- * We parse the XML first so we can check if it doesn't contain any parser attacks which
- * might blow up our JVM while validating. We can prove that entity-expansion attacks work against
- * simple validation with even settings certain features for the parser.
  */
 public class XMLSchemaValidation {
 
     private static final Logger LOG = LoggerFactory.getLogger(XMLSchemaValidation.class);
 
+    private static final String JAXP_SCHEMA_SOURCE =
+            "http://java.sun.com/xml/jaxp/properties/schemaSource";
+    private static final String JAXP_SCHEMA_LANGUAGE =
+            "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
+    private static final String W3C_XML_SCHEMA =
+            "http://www.w3.org/2001/XMLSchema";
+
     private static final DocumentBuilderFactory documentBuilderFactory;
     private static final DocumentBuilder builder;
-    private static final Validator validator;
 
     static {
 
@@ -39,22 +38,29 @@ public class XMLSchemaValidation {
 
         try {
 
-            URL schemaFile = getResource("xml/books.xsd");
-            SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = sf.newSchema(schemaFile);
-
             documentBuilderFactory.setNamespaceAware(true);
+            documentBuilderFactory.setValidating(true);
+
+            // must be declared before we can assign the schema validation underneath
+            //documentBuilderFactory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
+
+            // Using a schema source results in ignoring DTD's
+            //documentBuilderFactory.setAttribute(JAXP_SCHEMA_SOURCE, new File("src/main/resources/xml/books.xsd"));
+
             // protects against xml bomb attack
             // protected against recursion out of the box (without security measures)
             documentBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
-            // protects against XML bomb attack if you don't want to set secure processing
-            //documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl",true);
+            // protects against doc-type related issues by prohibiting a doctype in the xml
+            // must be enabled if we really want to process DTD
+            documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl",false);
+            //documentBuilderFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar",false);
 
-            validator = schema.newValidator();
-            validator.setErrorHandler(new MyErrorHandler());
+            // if DTD processing is allowd we will prohibit external entities
+            documentBuilderFactory.setFeature("http://xml.org/sax/features/external-general-entities", false);
 
             builder = documentBuilderFactory.newDocumentBuilder();
+            //builder.setErrorHandler(new MyErrorHandler());
 
         } catch (Exception e) {
             throw new TechnicalException(e);
@@ -64,7 +70,7 @@ public class XMLSchemaValidation {
     }
 
     public static void main(String[] args) {
-        Source xmlFile = new StreamSource(new File(getResource("xml/entity-expansion.xml").getFile()));
+        Source xmlFile = new StreamSource(new File(getResource("xml/external-entity.xml").getFile()));
         validate(xmlFile);
     }
 
@@ -76,31 +82,25 @@ public class XMLSchemaValidation {
 
         try {
 
-            Document document = builder.parse(xmlFile.getSystemId());
-            validator.validate(xmlFile);
-
-            // process document
-
+            builder.parse(xmlFile.getSystemId());
             LOG.info("XML is valid: {}", xmlFile.getSystemId());
+
         } catch (Exception e) {
             LOG.error(e.getMessage());
         }
     }
 
     public static class MyErrorHandler implements ErrorHandler {
-        @Override
         public void warning(SAXParseException exception) throws SAXException {
             // do something
             LOG.error(exception.getMessage());
         }
 
-        @Override
         public void error(SAXParseException exception) throws SAXException {
             // do something with the error
             LOG.error(exception.getMessage());
         }
 
-        @Override
         public void fatalError(SAXParseException exception) throws SAXException {
             // do something with the error
             LOG.error(exception.getMessage());

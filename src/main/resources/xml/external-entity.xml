@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE books [
+		<!ELEMENT books (book)*>
+        <!ELEMENT book (author,title,price,publish_date,virtual-library-path)+>
+        <!ELEMENT author (#PCDATA)>
+        <!ELEMENT title (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+        <!ELEMENT publish_date (#PCDATA)>
+        <!ELEMENT virtual-library-path (#PCDATA)>
+        <!ATTLIST book id CDATA #REQUIRED>
+        <!ENTITY xxe SYSTEM "http://wordpress.org/plugins/about/readme.txt" >
+]>
+<books>
+  <!--1 to 100 repetitions:-->
+  <book id="10">
+      <author>&xxe;</author>
+      <title>Some title here</title>
+      <price>23.00</price>
+      <publish_date>1920-01-01</publish_date>
+      <virtual-library-path>D:\java.exe</virtual-library-path>
+  </book>
+    <book id="20">
+        <author>Author 2</author>
+        <title>Another title here</title>
+        <price>30.00</price>
+        <publish_date>1990-01-01</publish_date>
+        <virtual-library-path>D:\program files\Java\java.exe</virtual-library-path>
+    </book>
+</books>

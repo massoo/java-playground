@@ -20,7 +20,8 @@ import java.net.URL;
  * <p/>
  * INFO:
  *
- * Class still vulnerable for xml bomb attack
+ * This example is vulnerable for parser attacks, even though it's widely used
+ * http://stackoverflow.com/questions/15732/whats-the-best-way-to-validate-an-xml-file-against-an-xsd-file
  *
  * To resolve schema's from other locations we need to implement a org.w3c.dom.ls.LSResourceResolver
  * Because of this we are protected from schema poisoning attacks
@@ -39,7 +40,8 @@ public class XMLSchemaBADValidation {
             schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
             // This has no effect on DoS (out of memory)
-            schemaFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl",true);
+            //schemaFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl",true);
+
             //schemaFactory.setFeature("http://xerces.apache.org/xerces1-j/features.html#external-general-entities", true);
             //schemaFactory.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.EXTERNAL_GENERAL_ENTITIES_FEATURE,false);
 
@@ -48,10 +50,13 @@ public class XMLSchemaBADValidation {
             //schemaFactory.setFeature("http://xml.org/sax/features/validation", false);
             //schemaFactory.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.USE_ENTITY_RESOLVER2_FEATURE,false);
             //schemaFactory.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.RESOLVE_DTD_URIS_FEATURE,false);
-
+            
             Schema schema = schemaFactory.newSchema(schemaFile);
 
             validator = schema.newValidator();
+
+            // doctype will still be processed
+            //validator.setFeature("http://apache.org/xml/features/disallow-doctype-decl",true);
         } catch (SAXException e) {
             throw new TechnicalException(e);
         }

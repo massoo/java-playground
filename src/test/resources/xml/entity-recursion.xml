@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE books [
+        <!ENTITY companyname "&divisionname; Contoso Inc.">
+        <!ENTITY divisionname "&companyname; Web Products Division">
+        ]>
+<urn:books xmlns:urn="urn:demo.com:books">
+  <!--1 to 100 repetitions:-->
+  <book id="10">
+    <author>&divisionname;</author>
+    <title>Some title here</title>
+    <price>23.00</price>
+    <publish_date>1920-01-01</publish_date>
+  </book>
+    <book id="20">
+    <author>Author 2</author>
+    <title>Another title here</title>
+    <price>30.00</price>
+    <publish_date>1990-01-01</publish_date>
+  </book>
+</urn:books>

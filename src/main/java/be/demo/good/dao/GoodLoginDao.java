@@ -22,18 +22,15 @@ public class GoodLoginDao implements ILoginDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Override
     public void addLogin(Login login) {
         sessionFactory.getCurrentSession().persist(login);
     }
 
-    @Override
     public List<Login> getLogins() {
         Query query = sessionFactory.getCurrentSession().getNamedQuery("getLogins");
         return query.list();
     }
 
-    @Override
     public Login getLoginByEmail(String email) {
         Query query = sessionFactory.getCurrentSession().getNamedQuery("getLoginsByEmail");
         query.setString("email", email);
@@ -47,7 +44,6 @@ public class GoodLoginDao implements ILoginDAO {
 
     }
 
-    @Override
     public Login BADgetLoginByEmail(String email) {
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("from Login l where l.email = " + email);
@@ -55,7 +51,6 @@ public class GoodLoginDao implements ILoginDAO {
         return (Login) query.list().get(0);
     }
 
-    @Override
     public void deleteAll() {
         Query query = sessionFactory.getCurrentSession().getNamedQuery("deleteAllLogins");
         query.executeUpdate();

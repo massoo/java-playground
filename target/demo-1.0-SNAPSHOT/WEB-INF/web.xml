@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>demo</display-name>
+
+    <!-- BEGIN: Log4j configuration to pick up errors on startup -->
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>WEB-INF/config/log4j.properties</param-value>
+    </context-param>
+    <!-- END: Log4j configuration to pick up errors on startup -->
+
+    <servlet>
+        <servlet-name>demo</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:configuration/applicationContext.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>demo</servlet-name>
+        <url-pattern>/app</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:/configuration/applicationContext.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+    <!-- BEGIN: Character encoding filter
+        Enforce encoding for every request to be UTF-8
+        This will enforce character encoding on every request
+        however response encoding could be overridden by our jsp pages.
+    -->
+    <!--<filter>-->
+        <!--<filter-name>CharacterEncodingFilter</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>encoding</param-name>-->
+            <!--<param-value>UTF-8</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>forceEncoding</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>CharacterEncodingFilter</filter-name>-->
+        <!--<url-pattern>/demo/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!-- END: Character encoding filter -->
+
+    <!-- BEGIN: Cleansing filter that allows a pattern of characters and cleanses the rest -->
+    <!--<filter>-->
+        <!--<filter-name>CleanseFilter</filter-name>-->
+        <!--<filter-class>be.demo.good.filters.CleanseFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>CleanseFilter</filter-name>-->
+        <!--<url-pattern>/demo/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!-- END: Cleansing filter-->
+
+    <!-- BEGIN: ESAPI ModSecurity WAF -->
+    <filter>
+        <filter-name>EsapiModSecurityWaf</filter-name>
+        <filter-class>org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter</filter-class>
+        <init-param>
+            <param-name>log_settings</param-name>
+            <param-value>WEB-INF/config/log4j.properties</param-value>
+        </init-param>
+        <init-param>
+            <param-name>configuration</param-name>
+            <param-value>WEB-INF/waf/waf-policy.xml</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EsapiModSecurityWaf</filter-name>
+        <servlet-name>demo</servlet-name>
+    </filter-mapping>
+    <!-- END: ESAPI ModSecurity WAF -->
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
