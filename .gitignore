@@ -15,6 +15,7 @@
 Thumbs.db
 .cache
 .project
+.classpath
 .settings
 .tmproj
 *.esproj
@@ -36,6 +37,8 @@ dwsync.xml
 .CVS
 intermediate
 publish
+target
+bin
 .idea
 .iml
  
