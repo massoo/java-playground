@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 /**
  * TODO: before we can finish this implementation we must know which pattern we will apply by default
- * TODO: measure the time we waiste by using this class
+ * TODO: measure the time we waste by using this class
  */
 public class CharacterSetRequestFilter extends HttpServletRequestWrapper {
 

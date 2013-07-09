@@ -8,6 +8,8 @@ import java.text.Normalizer;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.RandomStringUtils;
+
 /**
  * User: massoo
  */
@@ -53,6 +55,5 @@ public class Utility {
     public static boolean isValidRedirectionURL(String url) {
         return validRedirectionURLs.contains(url);
     }
-
 
 }
