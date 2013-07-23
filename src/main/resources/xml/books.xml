@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<urn:books xmlns:urn="urn:demo.com:books"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="books.xsd" >
-  <!--1 to 100 repetitions:-->
+<books 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="books.xsd" >
   <book id="10">
     <author>Author 1</author>
     <title>Some title here</title>
@@ -17,4 +15,4 @@
     <publish_date>1990-01-01</publish_date>
     <virtual-library-path>D:\program files\Java\java.exe</virtual-library-path>
   </book>
-</urn:books>
+</books>

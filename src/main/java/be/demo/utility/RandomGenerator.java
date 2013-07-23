@@ -31,6 +31,7 @@ package be.demo.utility;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 public final class RandomGenerator {
 	
@@ -78,5 +79,12 @@ public final class RandomGenerator {
 		}
 
 		return sb.toString();
+	}
+	
+	/*
+	 * 128 bit value with 122 bit of randomness
+	 */
+	public static String generateRandomFixedLengthId() {
+		return UUID.randomUUID().toString();
 	}
 }
