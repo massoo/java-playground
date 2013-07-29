@@ -1,6 +1,10 @@
 package be.demo.good.examples;
 
 import be.demo.good.exception.TechnicalException;
+
+import org.owasp.esapi.ESAPI;
+import org.owasp.esapi.codecs.Codec;
+import org.owasp.esapi.codecs.UnixCodec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,9 +25,10 @@ public class OSCommandSanitization {
             throw new TechnicalException("1 argument is expected !");
         }
 
-        badOSCommandSanitization(args[0]);
+        //badOSCommandSanitization(args[0]);
         //goodStrictOSCommandSanitization(args[0]);
         //goodTrustedOSCommandSanitization(args[0]);
+        goodESAPISanitization(args[0]);
     }
 
     private static void badOSCommandSanitization(String argument) {
@@ -36,6 +41,12 @@ public class OSCommandSanitization {
         } else {
             executeCommand(argument);
         }
+    }
+    
+    private static void goodESAPISanitization(String argument) {
+    	Codec codec = new UnixCodec();
+    	String encodedArgument = ESAPI.encoder().encodeForOS(codec, argument);
+    	executeCommand(encodedArgument);
     }
 
     private static void goodTrustedOSCommandSanitization(String argument) {
